@@ -1,0 +1,11 @@
+1. npx create-react-app 03-app(folder's name)
+
+2.cd 03-app
+
+3.yarn start(Starts the development server.)
+
+4.Other commands
+    [1] yarn build(Bundles the app into static files for production.)
+    [2] yarn test(Starts the test runner.)
+    [3] yarn eject(Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!)
