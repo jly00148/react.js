@@ -1,0 +1,15 @@
+1.安装react模块：npm i react react-dom --save
+
+2.安装babel：npm i babel-core babel-loader@7 babel-preset-env babel-preset-react --save-dev
+
+3.配制文件添加babel：
+{
+    test:/\.js$/,
+    exclude:/(node_modules)/,
+    use:{
+        loader:'babel-loader',
+        options:{
+            presets:['env','react']
+        }
+    }
+}
