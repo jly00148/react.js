@@ -6,8 +6,9 @@ class Item extends Component{
     }
 
     render(){
+        const {handDel,value} = this.props;
         return(
-            <li onClick={this.props.handDel.bind(this,)}>{this.props.value}</li>
+            <li onClick={handDel}>{value}</li>
         )
     }
 }
