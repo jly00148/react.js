@@ -19,7 +19,8 @@ ul{
 li{
     list-style: none;
     height: 40px;
-    border: 1px dashed #000;
+    border-bottom: 1px dashed #000;
+    border-left: 2px solid red;
     margin-top: 10px;
     line-height: 40px;
     padding: 5px;
