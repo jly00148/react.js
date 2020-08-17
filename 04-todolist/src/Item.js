@@ -6,6 +6,7 @@ class Item extends Component{
     }
 
     render(){
+        console.log('Item render...');
         const { handDel,value } = this.props;
         return(
             <li onClick={ handDel }>{ value }</li>
