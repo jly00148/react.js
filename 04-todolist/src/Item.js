@@ -1,17 +1,24 @@
-import React,{Component} from 'react';
-
+import React,{ Component } from 'react';
+import PropTypes from 'prop-types';
 class Item extends Component{
     constructor(props){
         super(props);
     }
 
     render(){
-        const {handDel,value} = this.props;
+        const { handDel,value } = this.props;
         return(
-            <li onClick={handDel}>{value}</li>
+            <li onClick={ handDel }>{ value }</li>
         )
     }
 }
 
-//子组件不能操作父组件中的数据
+Item.propTypes = {
+    handleDel:PropTypes.func,
+    value:PropTypes.string.isRequired
+}
+
+Item.defaultProps = {
+    value:'value default...'
+}
 export default Item;

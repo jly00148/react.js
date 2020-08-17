@@ -1,0 +1,17 @@
+ 文件：App-type.js:
+    1.console.log(App.prototype);Component
+    2.console.log(App.prototype.constructor === App); true
+    3.console.log(App.prototype.__proto__ === Component.prototype);true
+
+ 文件：Item.js:
+    4.类型检查:
+        1).PropTypes:定义父组件传给子组件的检验规则。
+        2.)用法：安装react默认会安装，使用前直接引入。example:import PropTypes from 'prop-types'。
+        3).Item.propTypes = {
+            handleDel:PropTypes.func  //代表父组件传给子组件的handleDel必需是函数
+            value:PropTypes.string.isRequired // 代表父组件传给子组件的task是必需输入项
+        }
+        4).父组件没有传值得的情况下设置默认值：
+        Item.defaultProps = {
+            value:'value default...'
+        }
