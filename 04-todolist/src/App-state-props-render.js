@@ -21,8 +21,9 @@ class App extends Component{
     }
 
     handChange(ev){
+        const task = this.input.value;
         this.setState({
-            task:ev.target.value
+            task:task
         })
     }
 
@@ -42,7 +43,7 @@ class App extends Component{
         console.log('App render...');
         return(
             <div className="App">
-                <input onChange={this.handChange} value={this.state.task} />
+                <input ref={(input)=>{this.input = input}} onChange={this.handChange} value={this.state.task} />
                 <button className="btn" onClick={this.handAdd}>按钮</button>
                 <ul>
                     {

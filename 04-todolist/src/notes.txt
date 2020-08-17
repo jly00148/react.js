@@ -1,9 +1,9 @@
- 文件：App-type.js:
+ 一、文件：App-type.js:
     1.console.log(App.prototype);Component
     2.console.log(App.prototype.constructor === App); true
     3.console.log(App.prototype.__proto__ === Component.prototype);true
 
- 文件：Item.js:
+ 二、文件：Item.js:
     1.类型检查:
         1).PropTypes:定义父组件传给子组件的检验规则。
         2.)用法：安装react默认会安装，使用前直接引入。example:import PropTypes from 'prop-types'。
@@ -16,8 +16,12 @@
             value:'value default...'
         }
 
- 文件：App-state-props-render.js/Item.js:
+ 三、文件：App-state-props-render.js/Item.js:
     1.state-props-render之间的关系：
         1).初始挂载dom节点，必会触发父组件的render方法，父组件render方法一触发，必会触发子组件render方法。
         2).父组件中国state发生改变，也会触发父组件中的render方法，父组件render一触发，子组件中的render方法也会触发，同上。
         3).子组件上的props发生改变也会触发子组件的render方法。
+ 
+ 四、获取dom节点：
+    1.在想要获取的标签(如input)内部添加属性ref，ref接收一个函数如：ref={(input)={this.input=input}},这一步操作把input的dom节点
+    加到App这个构造函数上，在handChange方法里同App构造函数上使用
