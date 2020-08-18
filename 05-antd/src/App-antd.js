@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DatePicker } from 'antd'
+import { DatePicker,Button,Input,Row,Col,List } from 'antd'
 import  Item from './Item.js';
 import './App-style.css';
 
@@ -22,9 +22,8 @@ class App extends Component{
     }
 
     handChange(ev){
-        const task = this.input.value;
         this.setState({
-            task:task
+            task:ev.target.value
         })
     }
 
@@ -41,17 +40,37 @@ class App extends Component{
         })
     }
     render(){
-        console.log('App render...');
         return(
             <div className="App">
-                <input ref={(input)=>{this.input = input}} onChange={this.handChange} value={this.state.task} />
-                <button className="btn" onClick={this.handAdd}>按钮</button>
-                <ul>
-                    {
-                        this.getItems()
-                    }
-                </ul>
-                <DatePicker />
+                <Row>
+                    <Col span={18}> 
+                        <Input 
+                            onChange={this.handChange} 
+                            value={this.state.task} 
+                        />
+                </Col>
+                <Col span={6}>
+                        <Button 
+                        className="btn" 
+                            type="primary"
+                            onClick={this.handAdd}>
+                            按钮
+                        </Button>
+                    </Col>
+                </Row>
+                <List
+                    style={{marginTop:10}}
+                    bordered
+                    dataSource={this.state.list}
+                    renderItem={(item,index)=>(
+                        <List.Item
+                            onClick={this.handDel.bind(this,index)}
+                        >
+                            {item}
+                        </List.Item>
+
+                    )}
+                />
             </div>
         )
     }

@@ -1,12 +1,12 @@
 import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
+
 class Item extends Component{
     constructor(props){
         super(props);
     }
 
     render(){
-        console.log('Item render...');
         const { handDel,value } = this.props;
         return(
             <li onClick={ handDel }>{ value }</li>
