@@ -18,10 +18,20 @@
 
  三、文件：App-state-props-render.js/Item.js:
     1.state-props-render之间的关系：
-        1).初始挂载dom节点，必会触发父组件的render方法，父组件render方法一触发，必会触发子组件render方法。
-        2).父组件中国state发生改变，也会触发父组件中的render方法，父组件render一触发，子组件中的render方法也会触发，同上。
+        1).初始挂载dom节点，必会触发父组件的render方法，父组件render方法一触发，
+    必会触发子组件render方法。
+        2).父组件中国state发生改变，也会触发父组件中的render方法，父组件render一触发，
+    子组件中的render方法也会触发，同上。
         3).子组件上的props发生改变也会触发子组件的render方法。
  
  四、获取dom节点：
-    1.在想要获取的标签(如input)内部添加属性ref，ref接收一个函数如：ref={(input)={this.input=input}},这一步操作把input的dom节点
+        1.在想要获取的标签(如input)内部添加属性ref，ref接收一个函数如：
+    ref={(input)={this.input=input}},这一步操作把input的dom节点
     加到App这个构造函数上，在handChange方法里同App构造函数上使用
+
+ 五：react特点：
+    1.声明式(数据驱动)
+    2.组件化
+    3.单项数据流(只能是父组件传递参数给子组件)
+    4.视图层框架(构建UI界面)
+    5.虚拟DOM
