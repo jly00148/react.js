@@ -1,0 +1,4 @@
+一：按需加载css
+1. npm i babel-plugin-import --save-dev
+2. 文件配置(options里)：
+    plugins:[["import",{"libraryName":"antd","libraryDirectory":"es","style":"css"}]]
