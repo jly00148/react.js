@@ -5,6 +5,12 @@ class Item extends Component{
         super(props);
     }
 
+    componentWillUnmount(){
+        //在componentDidUpdate之前执行
+        //清理工作，例如关闭定时器
+        console.log('componentWillUnmount...');
+    }
+
     render(){
         console.log('Item render...');
         const { handDel,value } = this.props;
