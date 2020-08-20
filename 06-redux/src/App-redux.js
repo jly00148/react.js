@@ -7,42 +7,56 @@ import './App-style.css';
 class App extends Component{
     constructor(props){
         super(props)
-        // this.state = {
-        //     list:['crossfire'],
-        //     task:''
-        // }
-
         this.handChange = this.handChange.bind(this);
         this.handAdd= this.handAdd.bind(this);
         this.state = store.getState();
-        
         store.subscribe(()=>{
             this.setState(store.getState())
         })
     }
 
     handAdd(){
-        this.setState(()=>({
-            list:[...this.state.list,this.state.task],
-            task:''
-        }))
+        const payload = this.state.task;
+        const action ={
+            type:'add_item',
+            payload:payload
+        }
+
+        // this.setState(()=>({
+        //     list:[...this.state.list,this.state.task],
+        //     task:''
+        // }))
+
+        store.dispatch(action);
     }
 
     handChange(ev){
-            const task = ev.target.value
-            const action = {
-                type:'change_item',
-                payload:task
-            }
-            store.dispatch(action);
+        const task = ev.target.value;
+
+        // const task = ev.target.value;
+        // this.setState({
+        //     task:task
+        // })
+
+        const action = {
+            type:'change_item',
+            payload:task
+        }
+        store.dispatch(action);
     }
 
     handDel(index){
-        const list = this.state.list;
-        list.splice(index,1);
-        this.setState({
-            list:list
-        })
+        // const list = this.state.list;
+        // list.splice(index,1);
+        // this.setState({
+        //     list:list
+        // })
+        const payload = index;
+        const action = {
+            type:'del_item',
+            payload
+        }
+        store.dispatch(action);
     }
     getItems(){
         return this.state.list.map((value,index)=>{
