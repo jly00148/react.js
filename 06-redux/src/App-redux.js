@@ -14,7 +14,11 @@ class App extends Component{
 
         this.handChange = this.handChange.bind(this);
         this.handAdd= this.handAdd.bind(this);
-        this.state = store.getState()
+        this.state = store.getState();
+        
+        store.subscribe(()=>{
+            this.setState(store.getState())
+        })
     }
 
     handAdd(){
@@ -25,9 +29,12 @@ class App extends Component{
     }
 
     handChange(ev){
-        this.setState({
-            task:ev.target.value
-        })
+            const task = ev.target.value
+            const action = {
+                type:'change_item',
+                payload:task
+            }
+            store.dispatch(action);
     }
 
     handDel(index){
