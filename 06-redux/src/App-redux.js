@@ -3,6 +3,7 @@ import { DatePicker,Button,Input,Row,Col,List } from 'antd'
 import  Item from './Item.js';
 import store from './store/index.js';
 import './App-style.css';
+import { getChangeCreator,getAddCreator,getDelCreator } from './store/actionCreator.js';
 
 class App extends Component{
     constructor(props){
@@ -17,32 +18,33 @@ class App extends Component{
 
     handAdd(){
         const payload = this.state.task;
-        const action ={
-            type:'add_item',
-            payload:payload
-        }
-
+        // const action = {
+        //     type:ADD_ITEM,
+        //     payload:payload
+        // }
         // this.setState(()=>({
         //     list:[...this.state.list,this.state.task],
         //     task:''
         // }))
+        // store.dispatch(action);
 
-        store.dispatch(action);
+        store.dispatch(getAddCreator(payload));
+
     }
 
     handChange(ev){
-        const task = ev.target.value;
-
         // const task = ev.target.value;
         // this.setState({
         //     task:task
         // })
+        // const action = {
+        //     type:CHANGE_ITEM,
+        //     payload:task
+        // }
+        // store.dispatch(action);
 
-        const action = {
-            type:'change_item',
-            payload:task
-        }
-        store.dispatch(action);
+        const task = ev.target.value;
+        store.dispatch(getChangeCreator(task));
     }
 
     handDel(index){
@@ -51,12 +53,15 @@ class App extends Component{
         // this.setState({
         //     list:list
         // })
+        // const payload = index;
+        // const action = {
+        //     type:DEL_ITEM,
+        //     payload
+        // }
+        // store.dispatch(action);
+        
         const payload = index;
-        const action = {
-            type:'del_item',
-            payload
-        }
-        store.dispatch(action);
+        store.dispatch(getDelCreator(payload))
     }
     getItems(){
         return this.state.list.map((value,index)=>{

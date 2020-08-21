@@ -1,9 +1,10 @@
+import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './actionTypes';
  const defaultState = {
     list:['crossfire'],
     task:''
  }
  export default (state=defaultState,action)=>{
-   if(action.type == 'change_item'){
+   if(action.type == CHANGE_ITEM){
       /*
          1.reducer是一个纯函数(有固定的输入就会有固定输出)
          2. (state.task = action.payload)错误的写法，reducer不能更改参数传递过来的state,因为传递过来的state是store中的state
@@ -16,12 +17,12 @@
       return newState
    }
 
-   if(action.type == 'add_item'){
+   if(action.type == ADD_ITEM){
       const newState = JSON.parse(JSON.stringify(state));
       newState.list.push(action.payload);
       return newState;
    }
-   if(action.type == 'del_item'){
+   if(action.type == DEL_ITEM){
       const newState = JSON.parse(JSON.stringify(state));
       newState.list.splice(action.payload,1);
       return newState;

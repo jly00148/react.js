@@ -1,0 +1,1 @@
+分离actionType和actionCreator是为了方便后期修改和维护
