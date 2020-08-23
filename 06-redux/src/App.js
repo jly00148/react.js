@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import  Item from './Item.js';
 import store from './store/index.js';
 import './App-style.css';
 import { getChangeCreator,getAddCreator,getDelCreator } from './store/actionCreator.js';
 import AppUI from './App-UI.js';
+
+// 容器组件
 class App extends Component{
     constructor(props){
         super(props)
         this.handChange = this.handChange.bind(this);
         this.handAdd= this.handAdd.bind(this);
+        this.handDel= this.handDel.bind(this);
         this.state = store.getState();
+
         store.subscribe(()=>{
             this.setState(store.getState())
         })
@@ -34,7 +37,7 @@ class App extends Component{
     render(){
         return(
             <AppUI
-                task={this.task}
+                task={this.state.task}
                 list={this.state.list}
                 handDel={this.handDel}
                 handChange={this.handChange}
