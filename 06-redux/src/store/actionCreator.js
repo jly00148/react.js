@@ -1,25 +1,29 @@
-import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './actionTypes';
+import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM,INIT_ITEM} from './actionTypes';
 
 export function getChangeCreator(task){
-    const action = {
+    return {
         type:CHANGE_ITEM,
         payload:task
     }
-    return action;
 }
 
 export function getAddCreator(payload){
-    const action = {
+    return {
         type:ADD_ITEM,
         payload:payload
     }
-    return action;
 }
 
 export function getDelCreator(payload){
-        const action = {
+    return {
             type:DEL_ITEM,
             payload
         }
-    return action;
+}
+
+export function getInitDataCreator(payload){
+    return {
+        type:INIT_ITEM,
+        payload
+    }
 }

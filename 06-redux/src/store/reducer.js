@@ -1,4 +1,4 @@
-import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './actionTypes';
+import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM,INIT_ITEM} from './actionTypes';
  const defaultState = {
     list:['crossfire'],
     task:''
@@ -22,11 +22,18 @@ import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM} from './actionTypes';
       newState.list.push(action.payload);
       return newState;
    }
+
    if(action.type == DEL_ITEM){
       const newState = JSON.parse(JSON.stringify(state));
       newState.list.splice(action.payload,1);
       return newState;
    }
+
+   if(action.type == INIT_ITEM){
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.task = action.payload;
+      return newState;
+   }   
    return state
 
 }
