@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button,Input,Row,Col,List } from 'antd'
 import { connect } from 'react-redux';
+import store from './store/index.js'
 import './App-style.css';
 import { getChangeCreator,
         getAddCreator,
@@ -12,6 +13,9 @@ from './store/actionCreator.js';
 
 // 容器组件
 class App extends Component{
+    componentDidMount(){
+        this.props.handInitData()
+    }
     render(){
         const { task,list,handChange,handAdd,handDel } = this.props;
         return  <div className="App">
@@ -53,4 +57,25 @@ const mapStateToProps = (state)=>{
         task:state.task
     }
 }
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        handChange:(ev)=>{
+            const task = ev.target.value;
+            store.dispatch(getChangeCreator(task))
+        },
+        handAdd:()=>{
+            const payload = store.getState().task;
+            store.dispatch(getAddCreator(payload));
+
+        },
+        handDel:(index)=>{
+            const payload = index;
+            store.dispatch(getDelCreator(payload))
+        },
+        handInitData:()=>{
+            dispatch(getRequestInitData())
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);
