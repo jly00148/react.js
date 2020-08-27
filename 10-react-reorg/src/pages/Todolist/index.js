@@ -3,7 +3,7 @@ import { Button,Input,Row,Col,List } from 'antd'
 import { connect } from 'react-redux';
 import './index.css';
 
-import  * as actions from './store/actionCreator.js';
+import  { actions } from './store/index.js';
 
 // 容器组件
 class Todolist extends Component{
@@ -47,8 +47,8 @@ class Todolist extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        list:state.list,
-        task:state.task
+        list:state.todolist.list,
+        task:state.todolist.task
     }
 }
 
