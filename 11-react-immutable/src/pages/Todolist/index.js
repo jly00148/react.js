@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Button,Input,Row,Col,List } from 'antd'
 import { connect } from 'react-redux';
 import './index.css';
-
 import  { actions } from './store/index.js';
-
+import store from '../../store/index'
 // 容器组件
 class Todolist extends Component{
     componentDidMount(){
@@ -48,8 +47,8 @@ class Todolist extends Component{
 const mapStateToProps = (state)=>{
     console.log('state',state)
     return {
-        list:state.todolist.list,
-        task:state.todolist.task
+        list:state.get('todolist').get('list'),
+        task:state.get('todolist').get('task')
     }
 }
 
@@ -57,16 +56,16 @@ const mapDispatchToProps = (dispatch)=>{
     return {
         handChange:(ev)=>{
             const task = ev.target.value;
-            store.dispatch(actions.getChangeCreator(task))
+            dispatch(actions.getChangeCreator(task))
         },
         handAdd:()=>{
             const payload = store.getState().task;
-            store.dispatch(actions.getAddCreator(payload));
+            dispatch(actions.getAddCreator(payload));
 
         },
         handDel:(index)=>{
             const payload = index;
-            store.dispatch(actions.getDelCreator(payload))
+            dispatch(actions.getDelCreator(payload))
         },
         handInitData:()=>{
             dispatch(actions.getRequestInitData())
