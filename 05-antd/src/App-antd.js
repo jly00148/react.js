@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { DatePicker,Button,Input,Row,Col,List } from 'antd'
+import { DatePicker,Button,Input,Row,Col,List } from 'antd';
+import 'antd/dist/antd.css'//引入所有antd所有样式，按需加载见notes.txt
 import  Item from './Item.js';
 import './App-style.css';
 
