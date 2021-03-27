@@ -1,6 +1,6 @@
 import {CHANGE_ITEM,ADD_ITEM,DEL_ITEM,INIT_ITEM} from './actionTypes';
  const defaultState = {
-    list:['crossfire'],
+    list:['crossfire'], //空数组也行
     task:''
  }
  export default (state=defaultState,action)=>{
