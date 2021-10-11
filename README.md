@@ -40,6 +40,11 @@
     [3] yarn eject(Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!)
 
+## props-state-render关系：
+ * _this.state存放内部数据，this.props存放外部数据，render负责渲染_
+ * _当组件的state或者props发生改变时，render函数会重新执行_
+ * _当父组件的render执行时，子组件的render也会执行_
+
 ## 解释定义：
  * **受控文件**：_一些表单(input、textarea和select)的初始化值只能来源于组件内部数据state,这些表单元素的值更新需要通过控制用户的输入来更新state的实现，被React以这种方式控制取值的表单输入元素就叫'受控文件'_
  * **非受控文件**：_表单数据将由DOM节点处理的组件,ref获取dom节点_
@@ -74,3 +79,13 @@
         }
     ...
     ```
+## 生命周期函数(react 16.3版本以后)：
+![alt 生命周期函数](https://upload-images.jianshu.io/upload_images/5098241-10770cb6c6743070.png?imageMogr2/auto-orient/strip|imageView2/2)
+
+### 创建时：
+|  顺序  | 生命周期函数 | 执行时机 | 应用场景 | 说明 |
+| :- | :- |:- |:- |:- |
+| 1 | constructor(props) |render函数调用之前，<br>实例化组件对象时调用| 初始化state或者进行方法绑定 |如果不初始化state或进行方法绑定，<br>则不需要实现构造函数 |
+| 2 | 单元格 |单元格 |单元格 |单元格 |
+| 3 | 单元格 |单元格 |单元格 |单元格 |
+| 4 | 单元格 |单元格 |单元格 |单元格 |
