@@ -79,10 +79,13 @@
         }
     ...
     ```
+    
+***
+
 ## 生命周期函数(react 16.3版本以后)：
 ![alt 生命周期函数](https://upload-images.jianshu.io/upload_images/5098241-10770cb6c6743070.png?imageMogr2/auto-orient/strip|imageView2/2)
 
-*********************************************************************
+***
 
  1. _**创建时**_：    
 
@@ -93,4 +96,13 @@
 | 3 | render() | `-`|`-` |_组件中唯一必须实现的方法_ |
 | 4 | componentDidMount |_组件挂载(插入dom树中)完毕调用_ |_多用于发送网络请求获取数据或者获取dom节点的大小和位置_ | `-`|
 ---
- 2. _**更新时**_：
+
+ 2. _**更新时**_：   
+
+|**顺序**| **生命周期函数** | **执行时机** | **应用场景** | **说明** |
+| :-: | :-: |:-: |:-: |:-: |
+| 1 | static getDerivedStateFromProps |_render方法调用之前调用,getDerivedStateFromProps之后执行_| _多用于由props值更新state_ |_必须返回一个对象来更新state，返回null不更新任何内容_ |
+| 2 | shouldComponentUpdate(nextProps,nextState) |_render方法调用之前，getDerivedStateFromProps之后执行_ |_根据props或state的值来决定组件的渲染，一般用来阻止不必要的渲染_ |_返回布尔值，根据布尔值决定是否执行后续的生命周期_ |
+| 3 | render() | `-`|`-` |_组件中唯一必须实现的方法_ |
+| 4 | getSnapshotBeforeUpdate(prevProps,prevState) |_最后一次渲染输出(提交到dom节点)之前调用_ |_获取dom更改之前的信息_ | _该方法返回的任何值将作为参数传递给componentDidUpdate()_|
+| 5 | componentDidUpdate(prevProps,prevState,snapshot) |_更新后会被立即调用，首次渲染不会被执行_ |_对更新后的dom进行曹操作，根据更新前后的数据对比决定是否发送网络请求_ | _第三个参数是getSnapshotBeforeUpdate()的返回值_|
