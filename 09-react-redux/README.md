@@ -7,7 +7,7 @@ install steps:
     npm i react-redux --save
 ```
 ```
-2. store文件夹下index.js下引入react-redux
+2.入口文件index.js下引入react-redux;
     import { Provider } from 'react-redux'
 ```
 ```
